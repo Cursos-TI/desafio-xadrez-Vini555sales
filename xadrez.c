@@ -75,17 +75,25 @@ int main() {
     printf("Movimentação Bispo: ");
     LineBreak(2);
 
-    for(int x = 0; x < bishopMovementAmount; x++)
+    int bishopHorizontalMovement = 0;
+
+    while(bishopHorizontalMovement < bishopMovementAmount)
     {
         printf("- O Bispo se moveu para a direita");
         LineBreak(1);
+
+        bishopHorizontalMovement++;
         
-        if(x < bishopMovementAmount - 1) continue;
+        if(bishopHorizontalMovement <= bishopMovementAmount - 1) continue;
         
-        for(int y = 0; y < bishopMovementAmount; y++)
+        int bishopVerticalMovement = 0;
+
+        while(bishopVerticalMovement < bishopMovementAmount)
         {
             printf("- O Bispo se moveu para cima");
             LineBreak(1);
+
+            bishopVerticalMovement++;
         }
     }
 
