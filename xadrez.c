@@ -31,6 +31,12 @@
 
 //
 
+typedef struct
+{
+    int x;
+    int y;
+} Vector2;
+
 void LineBreak(int times)
 {
     for(int i = 0; i < times; i++)
@@ -44,6 +50,10 @@ int main() {
     const int towerMovementAmount = 5;
     const int bishopMovementAmount = 5;
     const int queenMovementAmount = 8;
+
+    Vector2 horseMovementAmount;
+    horseMovementAmount.x = 1;
+    horseMovementAmount.y = 2;
 
     printf("Movimentação da Torre:");
     LineBreak(2);
@@ -63,12 +73,12 @@ int main() {
 
     for(int x = 0; x < bishopMovementAmount; x++)
     {
-        printf("Bispo moveu para a diagonal direita");
+        printf("- Bispo moveu para a diagonal direita");
         LineBreak(1);
     }
 
     LineBreak(1);
-    printf("Movimentação Rainha:");
+    printf("- Movimentação Rainha:");
     LineBreak(2);
     
     int currentQueenMovementAmount = 0;
@@ -76,12 +86,32 @@ int main() {
     do
     {
         currentQueenMovementAmount++;
-        printf("A Rainha se moveu para a esquerda");
+        printf("- A Rainha se moveu para a esquerda");
         LineBreak(1);
     }
     while(currentQueenMovementAmount < queenMovementAmount);
 
     LineBreak(1);
+    printf("Movimentação do Cavalo:");
+    LineBreak(2);
+    
+    for(int y = 0; y < horseMovementAmount.y; y++)
+    {
+        printf("- O cavalo se moveu para baixo");
+        LineBreak(1);
+
+        if(y < horseMovementAmount.y - 1) continue;
+
+        int currentHorizontalMovementAmount = 0;
+
+        while(currentHorizontalMovementAmount < horseMovementAmount.x)
+        {
+            printf("- O cavalo se moveu para a esquerda");
+            LineBreak(2);
+
+            currentHorizontalMovementAmount++;
+        }
+    }
 
     return 0;
 }
