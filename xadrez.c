@@ -45,6 +45,15 @@ void LineBreak(int times)
     }
 }
 
+void MoveTower(int targetMovementValue)
+{
+    if(targetMovementValue <= 0) return;
+
+    printf("- Torre se moveu para a direita");
+    LineBreak(1);
+    MoveTower(targetMovementValue - 1);
+}
+
 int main() {
     
     const int towerMovementAmount = 5;
@@ -60,12 +69,7 @@ int main() {
     
     int currentTowerMovementAmount = 0;
 
-    while(currentTowerMovementAmount < towerMovementAmount)
-    {
-        printf("Torre moveu para a direita");
-        LineBreak(1);
-        currentTowerMovementAmount++;
-    }
+    MoveTower(towerMovementAmount);
 
     LineBreak(1);
     printf("Movimentação Bispo: ");
@@ -73,8 +77,16 @@ int main() {
 
     for(int x = 0; x < bishopMovementAmount; x++)
     {
-        printf("- Bispo moveu para a diagonal direita");
+        printf("- O Bispo se moveu para a direita");
         LineBreak(1);
+        
+        if(x < bishopMovementAmount - 1) continue;
+        
+        for(int y = 0; y < bishopMovementAmount; y++)
+        {
+            printf("- O Bispo se moveu para cima");
+            LineBreak(1);
+        }
     }
 
     LineBreak(1);
@@ -95,22 +107,16 @@ int main() {
     printf("Movimentação do Cavalo:");
     LineBreak(2);
     
-    for(int y = 0; y < horseMovementAmount.y; y++)
+    for(int x = 0, y = 0; x < horseMovementAmount.x && y < horseMovementAmount.y; y++)
     {
         printf("- O cavalo se moveu para baixo");
         LineBreak(1);
 
         if(y < horseMovementAmount.y - 1) continue;
-
-        int currentHorizontalMovementAmount = 0;
-
-        while(currentHorizontalMovementAmount < horseMovementAmount.x)
-        {
-            printf("- O cavalo se moveu para a esquerda");
-            LineBreak(2);
-
-            currentHorizontalMovementAmount++;
-        }
+        
+        printf("- O cavalo se moveu para a esquerda");
+        LineBreak(2);
+        x++;
     }
 
     return 0;
